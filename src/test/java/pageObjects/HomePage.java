@@ -25,6 +25,11 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//select[@class=\"product_sort_container\"]")
     WebElement productSort;
 
+    @FindBy(xpath = "class=\"inventory_item_name \"")
+    List<WebElement> productNameList;
+
+    @FindBy(xpath = "")
+
     public void selectSort(String option) {
         Select select = new Select(productSort);
         select.selectByValue(option);
@@ -48,6 +53,14 @@ public class HomePage extends BasePage {
 
         }
         return products;
+    }
+
+    public void clickCard(String title) {
+        for (WebElement product : productNameList) {
+            if (product.getText().equals(title)) {
+                product.click();
+            }
+        }
     }
 
 }
