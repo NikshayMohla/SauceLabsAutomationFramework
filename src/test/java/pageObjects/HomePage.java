@@ -25,10 +25,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//select[@class=\"product_sort_container\"]")
     WebElement productSort;
 
-    @FindBy(xpath = "class=\"inventory_item_name \"")
+    @FindBy(css = "[data-test='inventory-item-name']")
     List<WebElement> productNameList;
 
-    @FindBy(xpath = "")
 
     public void selectSort(String option) {
         Select select = new Select(productSort);
@@ -39,9 +38,8 @@ public class HomePage extends BasePage {
         List<Products> products = new ArrayList<>();
 
         for (WebElement product : inventoryList) {
-            String productName = product
-                    .findElement(By.cssSelector("[data-test='inventory-item-name']"))
-                    .getText();
+            WebElement productName = product
+                    .findElement(By.cssSelector("[data-test='inventory-item-name']"));
 
             String productPrice = product.findElement(By.cssSelector("[data-test='inventory-item-price']")).getText();
 
@@ -49,7 +47,11 @@ public class HomePage extends BasePage {
 
             String productDesc = product.findElement(By.cssSelector("[data-test='inventory-item-description']")).getText();
 
-            products.add(new Products(productName, productDesc, finalPrice));
+            WebElement addToCartBtn = product.findElement(
+                    By.cssSelector("button[data-test^='add-to-cart']")
+            );
+
+            products.add(new Products(productName, productDesc, finalPrice, addToCartBtn));
 
         }
         return products;
@@ -59,6 +61,7 @@ public class HomePage extends BasePage {
         for (WebElement product : productNameList) {
             if (product.getText().equals(title)) {
                 product.click();
+                break;
             }
         }
     }

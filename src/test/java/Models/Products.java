@@ -1,19 +1,23 @@
 package Models;
 
 import lombok.Getter;
+import org.openqa.selenium.WebElement;
 
 public class Products {
-    public Products(String productName, String productDesc, double finalPrice) {
+    public Products(WebElement productName, String productDesc, double finalPrice, WebElement addToCartBtn) {
         this.productName = productName;
         this.description = productDesc;
         this.price = finalPrice;
+        this.addToCartBtn = addToCartBtn;
     }
 
     @Getter
-    public String productName;
+    public WebElement productName;
     @Getter
     public String description;
     @Getter
     public double price;
+    @Getter
+    public WebElement addToCartBtn;
 
 }

@@ -27,12 +27,12 @@ public class ProductPage extends BasePage {
 
 
     public Products getProduct() {
-        String name = productName.getText();
+        WebElement name = productName;
         String description = productDescription.getText();
         double price = Double.parseDouble(
                 productPrice.getText().replace("$", "")
         );
-        return new Products(name, description, price);
+        return new Products(name, description, price, addToCartButton);
     }
 
     public void clickAddToCartButton() {

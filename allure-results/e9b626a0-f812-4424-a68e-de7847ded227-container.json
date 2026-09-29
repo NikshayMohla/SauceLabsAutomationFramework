@@ -1,0 +1,1 @@
+{"uuid":"e9b626a0-f812-4424-a68e-de7847ded227","name":"testCases.TC02_verifySort.setup","children":["4ee98cc3-5a83-4d56-b816-ff7d1b311f6b"],"description":"","befores":[{"name":"setup","status":"broken","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1790667907007,"stop":1790667907007}],"afters":[],"start":1790667907007,"stop":1790667907008}
